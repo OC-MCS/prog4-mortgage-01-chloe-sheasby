@@ -22,5 +22,10 @@ int main()
 	cin >> years;
 	cin.ignore();
 
-	Mortgage mortgage(loan, rate, years);
+	Mortgage mortgage(loan, rate, years);		// is this allowed?
+
+	cout << "Your monthly payment: $" << mortgage.monthlyPaymentAmount() << endl;
+	cout << "Total amount paid to the bank: $" << mortgage.getTotalAmount() << endl;
+
+	return 0;
 }
