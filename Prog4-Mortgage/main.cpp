@@ -4,6 +4,7 @@
 // Due Wednesday, February 20th
 
 #include <iostream>
+#include <iomanip>
 #include <string>
 #include "Mortgage.h"
 
@@ -25,7 +26,7 @@ int main()
 
 	cout << "Please enter the dollar amount of your loan: "; 
 	getline(cin, inputL);
-	loan = validateLoanOrRate(inputL);		// checks for invalid input
+	loan = validateLoanOrRate(inputL);		// checks for invalid input and then initializes the corresponding value
 
 	cout << "Please enter the annual interest rate: ";
 	getline(cin, inputR);
@@ -35,12 +36,12 @@ int main()
 	getline(cin, inputY);
 	years = validateYears(inputY);
 
-	Mortgage mortgage(loan, rate, years);		// is this allowed?
+	Mortgage mortgage(loan, rate, years);		// initializes an instance of Mortgage with the inputted values
 
-	cout << "Your monthly payment: $" << mortgage.monthlyPaymentAmount() << endl;	
-										// gets the monthly payment amount and displays it
-	cout << "Total amount paid to the bank: $" << mortgage.getTotalAmount() << endl;
-										// gets the total amount payed to the bank and displays it
+	cout << "Your monthly payment: $" << fixed << showpoint << setprecision(2) 
+		<< mortgage.monthlyPaymentAmount() << endl;		// gets the monthly payment amount and displays it
+	cout << "Total amount paid to the bank: $" << fixed << showpoint << setprecision(2) 
+		<< mortgage.getTotalAmount() << endl;	// gets the total amount payed to the bank and displays it
 
 	return 0;
 }

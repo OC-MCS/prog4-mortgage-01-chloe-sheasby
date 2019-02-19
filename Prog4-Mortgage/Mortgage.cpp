@@ -13,7 +13,7 @@ using namespace std;
 Mortgage::Mortgage(float l, float r, int y)
 {
 	loan = l;
-	rate = r;
+	rate = r / 100;		// changes the rate percentage into the decimal form
 	years = y;
 }
 
