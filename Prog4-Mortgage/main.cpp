@@ -24,24 +24,32 @@ int main()
 		rate;		// holds the annual interest rate
 	int years;		// holds the number of years
 
+	Mortgage test(5000, 4.5, 5);		// initializes this instance of mortgage with values in the program
+	cout << fixed << showpoint << setprecision(2);
+	cout << "Your monthly payment: $" << test.monthlyPaymentAmount() << endl;
+	// gets the monthly payment amount and displays it
+	cout << "Total amount paid to the bank: $" << test.getTotalAmount() << endl << endl;
+	// gets the total amount payed to the bank and displays it
+
 	cout << "Please enter the dollar amount of your loan: "; 
 	getline(cin, inputL);
-	loan = validateLoanOrRate(inputL);		// checks for invalid input and then initializes the corresponding value
+	loan = validateLoanOrRate(inputL);		// checks for invalid input and then initializes loan
 
 	cout << "Please enter the annual interest rate: ";
 	getline(cin, inputR);
-	rate = validateLoanOrRate(inputR);
+	rate = validateLoanOrRate(inputR);		// checks for invalid input and then initializes rate
 
 	cout << "Please enter the number of years of the loan: ";
 	getline(cin, inputY);
-	years = validateYears(inputY);
+	years = validateYears(inputY);			// checks for invalid input and then initializes years
 
 	Mortgage mortgage(loan, rate, years);		// initializes an instance of Mortgage with the inputted values
 
-	cout << "Your monthly payment: $" << fixed << showpoint << setprecision(2) 
-		<< mortgage.monthlyPaymentAmount() << endl;		// gets the monthly payment amount and displays it
-	cout << "Total amount paid to the bank: $" << fixed << showpoint << setprecision(2) 
-		<< mortgage.getTotalAmount() << endl;	// gets the total amount payed to the bank and displays it
+	cout << fixed << showpoint << setprecision(2) << endl;
+	cout << "Your monthly payment: $" << mortgage.monthlyPaymentAmount() << endl;		
+	// gets the monthly payment amount and displays it
+	cout << "Total amount paid to the bank: $" << mortgage.getTotalAmount() << endl;	
+	// gets the total amount payed to the bank and displays it
 
 	return 0;
 }

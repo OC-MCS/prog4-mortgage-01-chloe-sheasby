@@ -1,20 +1,17 @@
-// implementation file for Mortgage class
 #include <iostream>
 #include <cmath>
 #include "Mortgage.h"
 
 using namespace std;
 
-// do I need another constructor?
-
-//===============================================================
+//============================================================
 // this is a constructor that initalizes the values of an item  
-//===============================================================
+//============================================================
 Mortgage::Mortgage(float l, float r, int y)
 {
-	loan = l;
-	rate = r / 100;		// changes the rate percentage into the decimal form
-	years = y;
+	loan = l;			// initializes loan
+	rate = r / 100;		// initializes rate with the decimal form of the rate percentage
+	years = y;			// initializes years
 }
 
 //=================================================================
@@ -23,7 +20,7 @@ Mortgage::Mortgage(float l, float r, int y)
 //=================================================================
 float Mortgage::calcTerm()	
 {
-	float term;
+	float term;		// holds the value for term
 
 	term = pow((1 + (rate / 12)), (12 * years));	// calculates term
 
@@ -36,7 +33,7 @@ float Mortgage::calcTerm()
 //======================================================================
 float Mortgage::monthlyPaymentAmount()	
 {
-	float payment;
+	float payment;					// holds the monthly payment value
 	float term = calcTerm();		// initalizes term based on the term formula in calcTerm
 
 	payment = (loan * (rate / 12) * term) / (term - 1);	// calculates payment
@@ -44,14 +41,13 @@ float Mortgage::monthlyPaymentAmount()
 	return payment;
 }
 
-//===============================================================
-// getTotalAmount calculates the total amount of money paid to 
-// the bank at the end of the loan period  
-// it also returns the total so that main can cout it
-//===============================================================
+//===============================================================================
+// getTotalAmount calculates the total amount of money paid to the bank at 
+// the end of the loan period, it also returns the total so that main can cout it
+//===============================================================================
 float Mortgage::getTotalAmount()			
 {
 	float payment = monthlyPaymentAmount();			// monthly payment amount
-	float total = payment * years * 12;				// 12 includes all of the months per year
+	float total = payment * years * 12;				// calculates total, the 12 is so that all of the months per year are included
 	return total;
 }
